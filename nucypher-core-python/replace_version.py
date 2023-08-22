@@ -17,9 +17,8 @@ def get_version():
         lines = f.readlines()
 
     for line in lines:
-        m = re.match(r'^version = "(\d+\.\d+\.\d+)"$', line)
-        if m:
-            version = m.group(1)
+        if m := re.match(r'^version = "(\d+\.\d+\.\d+)"$', line):
+            version = m[1]
             break
     else:
         raise RuntimeError("Cannot find the package version")
